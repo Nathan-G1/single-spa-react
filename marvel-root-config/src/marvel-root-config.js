@@ -1,20 +1,25 @@
 import { registerApplication, start } from "single-spa";
+import * as isActive from "./activity-functions";
 
-registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
-  activeWhen: ["/"],
-});
+registerApplication(
+  "@marvel/marvel-nav",
+  () => System.import("@marvel/marvel-spa"),
+  isActive.nav,
+  { domElement: document.getElementById("nav") }
+);
 
-// registerApplication({
-//   name: "@marvel/navbar",
-//   app: () => System.import("@marvel/navbar"),
-//   activeWhen: ["/"]
-// });
+registerApplication(
+  "@marvel/marvel-spa",
+  () => System.import("@marvel/marvel-spa"),
+  isActive.marvelApp,
+  { domElement: document.getElementById("marvel") }
+);
 
-start({
-  urlRerouteOnly: true,
-});
+registerApplication(
+  "@marvel/pokemon-app",
+  () => System.import("@marvel/pokemon-app"),
+  isActive.pokemonApp,
+  { domElement: document.getElementById("pokemon") }
+);
+
+start();
