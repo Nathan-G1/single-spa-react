@@ -1,17 +1,18 @@
 import React from "react";
-import "./root.component.css";
+import { BrowserRouter, Link } from "react-router-dom";
+// import "./root.component.css";
 
 export default function Root(props) {
   return (
-    <>
-    <h1>This is a marvelous app</h1>
+    <BrowserRouter>
       <nav className="nav">
-        <a href="/marvel" className="link">
+        <Link to="/marvel" className="link">
           Marvelous
-        </a>
-        <a href="/pokemon" className="link">
+        </Link>
+        <Link to="/pokemon" className="link">
           Pokemon
-        </a>
+        </Link>
       </nav>
-    </>)
+    </BrowserRouter>
+  )
 }
