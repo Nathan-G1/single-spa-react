@@ -20,7 +20,13 @@ export default function Root() {
       <p>Marvels</p>
       <ul>
         {marvels.map(marvel => (
-          <li key={marvel.id}>{marvel.name}</li>
+          <div className="card">
+            <img src={marvel.thumbnail.path} alt={marvel.name} style="width:100%" />
+              <div className="container">
+                <h4><b>{marvel.name}</b></h4>
+                <p>{marvel.description}</p>
+              </div>
+          </div>
         ))}
       </ul>
     </div>
